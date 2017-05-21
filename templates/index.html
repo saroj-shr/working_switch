@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Switch HTML</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" >
+</head>
+<body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+
+            <!-- JUMBOTRON -->
+            <div class="jumbotron">
+              <div class="container">
+                <h1>Raspberry PI Project</h1>
+                <p>Switch meroRoom</p>                
+              </div>
+            </div>
+
+
+            <div class="container">
+              <!-- CONTAINER -->
+              <div class="row text-center">
+
+                <div class="col-md-4"></div>
+
+                <div class="col-md-4">
+                  <h2 class="text-center">Switch first </h2>
+                  <p>
+                    <button class="btn btn-default btn-lg" type="submit" id = "switch_1_on">ON</button>
+                    <button class="btn btn-default btn-lg" type="submit" id = "switch_1_off">OFF</button>
+                  </p>
+
+                  <h2 class="text-center">Switch second </h2>
+                  <p>
+                    <button class="btn btn-default btn-lg" type="submit" id = "switch_2_on">ON</button>
+                    <button class="btn btn-default btn-lg" type="submit" id = "switch_2_off">OFF</button>
+                  </p>
+
+                </div>
+
+                <div class="col-md-4"></div>
+
+               <!--  <div class="col-md-4">
+                  <h2>CPU Temperature</h2>                          
+                  <h3><span id = 'temp_value'></span></h3>
+                </div> -->
+              </div>
+            </div> 
+
+              <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+              <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+              
+              <script type="text/javascript">
+                  //button click handlers for first switch.
+                  $(document).ready(function(){
+                    $('#switch_1_on').click(function(){            
+                      console.log('switch 1 ON!!');            
+                      $.post('/switch_1/1');
+                    });
+
+                    $('#switch_1_off').click(function(){            
+                      console.log('switch 1 off!!');            
+                      $.post('/switch_1/0');
+                    });
+                  });
+
+                  //button click handlers for second switch.
+                  $(document).ready(function(){
+                    $('#switch_2_on').click(function(){            
+                      console.log('Switch 2 ON!!');            
+                      $.post('/switch_2/1');
+                    });
+
+                    $('#switch_2_off').click(function(){            
+                      console.log('Switch 2 off!!');            
+                      $.post('/switch_2/0');
+                    });
+                  });                           
+              </script>
+</body>
+</html>
